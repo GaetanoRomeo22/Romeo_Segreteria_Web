@@ -2,6 +2,7 @@ let cacheName = 'PreviewReading';
 let filesToCache =
     [
         './index.html',
+        './account.html',
         'main.js',
         './style.css',
         './images',

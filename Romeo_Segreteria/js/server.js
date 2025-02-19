@@ -14,10 +14,10 @@ app.use(cors()); // permette la comunicazione client-server su domini diversi
 app.use(express.urlencoded({ extended: false })); // permette la gestione di dati in formato complesso
 
 const connection = mysql.createConnection({ // crea la connessione al database
-    host: 'localhost', // address of database's server
-    user: 'root', // database's user
-    password: 'Gaetano22', // user's password
-    database: 'Segreteria' // database's name
+    host: 'localhost', // indirizzo del database
+    user: 'root', // nome utente
+    password: 'Gaetano22', // password
+    database: 'Segreteria' // nome del database
 });
 
 connection.connect((err) => { // connessione al database
