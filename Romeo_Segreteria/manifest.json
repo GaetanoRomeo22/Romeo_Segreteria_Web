@@ -1,0 +1,19 @@
+{
+  "name": "Segreteria",
+  "short_name": "Seg",
+  "lang": "en-US",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white",
+  "description": "Site to allow students to access university services",
+  "icons":
+  [
+    {
+      "src": "images/logo.webp",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}
