@@ -1,10 +1,10 @@
 window.onload = () => { // esegue il service worker una volta che la pagina è caricata
     'use strict';
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service_worker.js').then(function (registration) { // service worker registered correctly
+        navigator.serviceWorker.register('service_worker.js').then(function (registration) { // service worker registrato correttamente
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             },
-            function (err) { // troubles in registering the service worker
+            function (err) { // eventuali errori nella registrazione del service worker
                 console.log('ServiceWorker registration failed: ', err);
             });
     }
@@ -31,20 +31,20 @@ function login() { // funzione di gestione del login dello studente lato client
         document.location.href = data.redirect; // reindirizza lo studente all'area riservata
     })
     .fail(function () { // in caso di errore
-        const loginError = document.getElementById('login-error-message');
-        loginError.innerText = 'Accesso non riuscito';
-        loginError.style.visibility = "visible";
+        const loginError = document.getElementById('login-error-message'); // estrae l'elemento contenente il messaggio di errore
+        loginError.innerText = 'Accesso non riuscito'; // messaggio da visualizzare
+        loginError.style.visibility = "visible"; // rende visibile il messaggio
         loginError.style.margin = "0.5rem";
     });
 }
 
 function togglePasswordVisibility(button, input) { // gestisce la visualizzazione della password
-    let password = document.getElementById(input);
-    if (password.type === "password") {
-        password.type = "text";
+    let password = document.getElementById(input); // estrae la password
+    if (password.type === "password") { // se la password è nascosta
+        password.type = "text"; // mostra la password
         button.innerHTML = '<i class="fa-regular fa-eye-slash"></i>';
-    } else {
-        password.type = "password";
+    } else { // se la password è visibile
+        password.type = "password"; // nasconde la password
         button.innerHTML = '<i class="fa-regular fa-eye"></i>';
     }
 }

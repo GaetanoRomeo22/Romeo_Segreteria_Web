@@ -19,7 +19,6 @@
   <!-- Meta tag for PWA -->
 
   <!--Specific meta tag for IOS -->
-  <link rel="apple-touch-icon" href="images/logo.webp">
   <meta name="apple-mobile-web-app-capable"          content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title"            content="PreviewReading">
@@ -34,26 +33,40 @@
   <title>Segreteria</title>
 </head>
 <body>
+  <!-- Logo -->
+  <header id="header">
+    <img src="images/logo.png" alt="Logo Università">
+  </header>
+  <!-- Logo -->
+
   <!-- Form di Login -->
   <div id="login-container" class="container">
-    <h2>LOGIN</h2>
+    <h2>Autenticazione</h2>
     <form id="login-form" method="post">
       <!-- Matricola -->
-      <label for="matricola">Matricola</label>
-      <input type="text" pattern="\d*" id="matricola" name="matricola" required placeholder="Inserisci la tua matricola">
+      <label for="matricola"></label>
+      <input type="text" pattern="\d*" id="matricola" name="matricola" required placeholder="Matricola">
       <!-- Matricola -->
 
       <!-- Password -->
-      <label for="password">Password</label>
+      <label for="password"></label>
       <div id="password-container">
-        <input type="password" id="password" name="password" required placeholder="Inserisci la tua password">
-        <button class="showhide_passw" type="button" onclick="togglePasswordVisibility(this, 'password')"><i class="fa-regular fa-eye"></i></button>
+        <input type="password" id="password" name="password" required placeholder="Password">
+        <button class="showhide_passw" type="button" onclick="togglePasswordVisibility(this, 'password')">
+          <i class="fa-regular fa-eye"></i>
+        </button>
       </div>
       <!-- Password -->
 
       <!-- Pulsante di Login -->
       <input id="login-button" type="button" value="Accedi" onclick="login()">
       <!-- Pulsante di Login -->
+
+      <!-- Recupero password -->
+      <p id="forgot-password">
+        <a href="recupero_password.html">Password dimenticata?</a>
+      </p>
+      <!-- Recupero password -->
     </form>
     <p id="login-error-message" class="error-message"></p>
   </div>

@@ -3,20 +3,41 @@ body {
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    font-family: sans-serif;
+    height: 100vh;
+    margin: 0;
 }
 
+/* Intestazione form di login */
+#header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#header img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+/* Intestazione form di login */
+
 /* Form di login */
-#login-container {
+#login-container, #reset-container {
     background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+#login-container:hover {
+    transform: scale(1.02);
 }
 
 #login-container form {
@@ -28,35 +49,53 @@ body {
     text-align: center;
 }
 
-#matricola {
-    width: 90%;
-    padding: 10px;
-    margin: 20px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+#matricola, #email {
+    width: 82%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+#matricola:focus {
+    border-color: #1E3A8A;
+    box-shadow: 0 0 10px rgba(30, 58, 138, 0.4);
+    outline: none;
 }
 
 #password {
-    width: 90%;
-    padding: 10px;
-    margin: 20px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%;
+    margin: 15px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    padding: 12px 50px 12px 12px;
 }
 
-#login-button {
-    width: 100%;
-    padding: 10px;
-    background: #28a745;
+#password:focus {
+    border-color: #1E3A8A;
+    box-shadow: 0 0 10px rgba(30, 58, 138, 0.4);
+    outline: none;
+}
+
+#login-button, #reset-button {
+    width: 90%;
+    padding: 12px;
+    background: #1E3A8A;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-#login-button:hover {
-    background: #218838;
+#login-button:hover, #reset-button:hover {
+    background: #3B82F6;
+    transform: scale(1.05);
 }
 
 #login-error-message {
@@ -65,25 +104,56 @@ body {
     margin-top: 10px;
 }
 
-.password-container {
+#password-container {
+    position: relative;
+    width: 90%;
     display: flex;
-    flex-flow: row;
-    justify-content: center;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    height: 100%;
-    background-color: white;
-    text-align: left;
+    align-items: center;
 }
 
-.password-container .toggle-password {
+.showhide_passw {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    background: none;
+    border: none;
     cursor: pointer;
     font-size: 18px;
+    color: #1E3A8A;
+    transition: color 0.3s ease-in-out;
+}
+.showhide_passw:hover {
+    color: #3B82F6;
+}
+
+#forgot-password, #back-to-login {
+    margin-top: 10px;
+}
+
+#forgot-password a, #back-to-login a {
+    color: #1E3A8A;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#forgot-password a:hover, #back-to-login a:hover {
+    text-decoration: underline;
+    color: #3B82F6;
 }
 /* Form di login */
+
+/* Form di recupero password */
+#reset-container:hover {
+    transform: scale(1.02);
+}
+
+#reset-container form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+/* Form di recupero password */

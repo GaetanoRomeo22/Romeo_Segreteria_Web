@@ -40,13 +40,13 @@ app.post('/login', (req, res) => { // funzione di gestione del login
         if (results.length > 0) { // se lo studente è trovato nel database
             const user = results[0]; // salva le sue informazioni
             res.json ({ // invia una risposta HTTP al client contenente le informazioni dello studente
-                nome: user.NOMESTUDENTE,
-                cognome: user.COGNOMESTUDENTE,
-                cfu: user.CFUSTUDENTE,
-                media: user.MEDIA,
-                corso: user.CORSOSTUDENTE,
-                nascita: user.DATANASCITA,
-                redirect: 'account.html'
+                nome: user.NOMESTUDENTE, // nome dello studente
+                cognome: user.COGNOMESTUDENTE, // cognome dello studente
+                cfu: user.CFUSTUDENTE, // cfu dello studente
+                media: user.MEDIA, // media dello studente
+                corso: user.CORSOSTUDENTE, // corso dello studente
+                nascita: user.DATANASCITA, // data di nascita dello studente
+                redirect: 'account.html' // pagina alla quale lo studente è reindirizzato
             });
         } else { // gestione dell'errore
             res.status(400).json({ error: 'Credenziali errate' });
