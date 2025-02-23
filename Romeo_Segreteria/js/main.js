@@ -21,6 +21,7 @@ function login() { // funzione di gestione del login dello studente lato client
         data: JSON.stringify({matricola: matricola, password: password}),
     })
     .done(function (data) { // in caso di login corretto
+        sessionStorage.setItem('loggato', 'true'); // lo studente ha effettuato l'accesso
         sessionStorage.setItem('matricola', matricola); // memorizza la matricola
         sessionStorage.setItem('nome', data.nome); // memorizza il nome
         sessionStorage.setItem('cognome', data.cognome); // memorizza il cognome
@@ -32,9 +33,14 @@ function login() { // funzione di gestione del login dello studente lato client
     })
     .fail(function () { // in caso di errore
         const loginError = document.getElementById('login-error-message'); // estrae l'elemento contenente il messaggio di errore
-        loginError.innerText = 'Accesso non riuscito'; // messaggio da visualizzare
-        loginError.style.visibility = "visible"; // rende visibile il messaggio
+        loginError.innerText = 'Credenziali errate'; // messaggio da visualizzare
+        loginError.style.opacity = '1'; // rende visibile il messaggio
+        loginError.style.visibility = 'visible';
         loginError.style.margin = "0.5rem";
+        setTimeout(function() { // nasconde il messaggio dopo 3 secondi
+            loginError.style.opacity = '0';
+            loginError.style.visibility = 'hidden';
+        }, 3000);
     });
 }
 
@@ -46,6 +52,12 @@ function togglePasswordVisibility(button, input) { // gestisce la visualizzazion
     } else { // se la password è visibile
         password.type = "password"; // nasconde la password
         button.innerHTML = '<i class="fa-regular fa-eye"></i>';
+    }
+}
+
+function checkIfLogged() { // funzione per gestire l'accesso controllato all'area riservata
+    if (!sessionStorage.getItem('loggato')) { // se lo studente che cerca l'accesso alla pagina non è loggato
+        document.location.href = './index.html'; // reindirizza lo studente alla pagina di login
     }
 }
 

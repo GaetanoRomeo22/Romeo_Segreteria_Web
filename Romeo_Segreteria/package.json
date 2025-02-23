@@ -1,5 +1,5 @@
 {
-  "name": "Romeo_Segreteria",
+  "name": "segreteria",
   "version": "1.0.0",
   "description": "",
   "main": "js/server.js",
@@ -8,6 +8,7 @@
   },
   "private": true,
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
     "express": "^4.21.2",

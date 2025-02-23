@@ -45,14 +45,18 @@
     <form id="login-form" method="post">
       <!-- Matricola -->
       <label for="matricola"></label>
-      <input type="text" pattern="\d*" id="matricola" name="matricola" required placeholder="Matricola">
+      <div id="matricola-container">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" pattern="\d*" id="matricola" name="matricola" required placeholder="Matricola">
+      </div>
       <!-- Matricola -->
 
       <!-- Password -->
       <label for="password"></label>
       <div id="password-container">
+        <i class="fa-solid fa-lock"></i>
         <input type="password" id="password" name="password" required placeholder="Password">
-        <button class="showhide_passw" type="button" onclick="togglePasswordVisibility(this, 'password')">
+        <button id="showhide_passw" type="button" onclick="togglePasswordVisibility(this, 'password')">
           <i class="fa-regular fa-eye"></i>
         </button>
       </div>

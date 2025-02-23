@@ -49,40 +49,38 @@ body {
     text-align: center;
 }
 
-#matricola, #email {
-    width: 82%;
-    padding: 12px;
-    margin: 15px 0;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
-}
-
-#matricola:focus {
-    border-color: #1E3A8A;
-    box-shadow: 0 0 10px rgba(30, 58, 138, 0.4);
-    outline: none;
-}
-
-#password {
+#matricola-container, #password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
     width: 100%;
+}
+
+#matricola-container i, #password-container i {
+    font-size: 18px;
+    color: #1E3A8A;
+    position: absolute;
+    left: 12px;
+}
+
+#matricola, #password {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
     margin: 15px 0;
     border: 2px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
     transition: all 0.3s ease-in-out;
-    padding: 12px 50px 12px 12px;
 }
 
-#password:focus {
+#matricola:focus, #password:focus {
     border-color: #1E3A8A;
     box-shadow: 0 0 10px rgba(30, 58, 138, 0.4);
     outline: none;
 }
 
 #login-button, #reset-button {
-    width: 90%;
+    width: 100%;
     padding: 12px;
     background: #1E3A8A;
     color: white;
@@ -91,6 +89,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s ease-in-out, transform 0.2s;
+    margin-top: 10px;
 }
 
 #login-button:hover, #reset-button:hover {
@@ -106,15 +105,15 @@ body {
 
 #password-container {
     position: relative;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
 }
 
-.showhide_passw {
+#showhide_passw {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 40px;
+    top: 40%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -123,12 +122,9 @@ body {
     color: #1E3A8A;
     transition: color 0.3s ease-in-out;
 }
-.showhide_passw:hover {
-    color: #3B82F6;
-}
 
 #forgot-password, #back-to-login {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #forgot-password a, #back-to-login a {
@@ -141,7 +137,6 @@ body {
     text-decoration: underline;
     color: #3B82F6;
 }
-/* Form di login */
 
 /* Form di recupero password */
 #reset-container:hover {
@@ -157,3 +152,59 @@ body {
     text-align: center;
 }
 /* Form di recupero password */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1E3A8A; /* Blu scuro */
+    padding: 15px 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Stile della lista dei link */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #3B82F6; /* Blu chiaro */
+}
+
+/* Stile del pulsante di logout */
+#logout-button {
+    background: #ff4d4d;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+#logout-button:hover {
+    background: #ff1a1a;
+    transform: scale(1.05);
+}
