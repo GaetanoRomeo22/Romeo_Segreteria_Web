@@ -18,7 +18,7 @@ function login() { // funzione di gestione del login dello studente lato client
         url: 'http://localhost:3000/login',
         method: 'POST',
         contentType: 'application/json',
-        data: JSON.stringify({matricola: matricola, password: password}),
+        data: JSON.stringify({ matricola: matricola, password: password }),
     })
     .done(function (data) { // in caso di login corretto
         sessionStorage.setItem('loggato', 'true'); // lo studente ha effettuato l'accesso
@@ -41,7 +41,7 @@ function login() { // funzione di gestione del login dello studente lato client
             loginError.style.opacity = '0';
             loginError.style.visibility = 'hidden';
         }, 3000);
-    });
+    })
 }
 
 function togglePasswordVisibility(button, input) { // gestisce la visualizzazione della password
@@ -70,4 +70,50 @@ function logout() { // gestisce la disconnessione dello studente dall'area riser
     sessionStorage.removeItem('corso'); // rimuove il corso
     sessionStorage.removeItem('datanascita'); // rimuove la data di nascita
     window.location.href = 'index.html'; // reindirizza l'utente alla pagina di index
+}
+
+function visualizzaEsamiPrenotabili() { // mostra allo studente gli appelli a cui può prenotarsi
+    $.ajax({ // invia una richiesta HTTP al server per ottenere gli appelli a cui può prenotarsi lo studente
+        url: 'http://localhost:3000/visualizzaEsamiPrenotabili',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ matricola: sessionStorage.getItem('matricola'), corso: sessionStorage.getItem('corso') }),
+    })
+    .done(function (data) {
+        let esamiPrenotabili = '';
+        data.appelli.forEach(esame => { // mostra gli appelli prenotabili
+            esamiPrenotabili += `<tr>
+                <td>${esame['NOMEESAME']}</td>
+                <td>${new Date(esame['DATAESAME']).toLocaleDateString()}</td>
+            </tr>`;
+        });
+        $('#appelliPrenotabili tbody').html(esamiPrenotabili);
+    })
+    .fail(function () {
+        $('#appelliPrenotabili tbody').html('<tr><td colspan="4">Nessun appello prenotabile</td></tr>');
+    })
+}
+
+function visualizzaLibretto() { // estrae gli esami superati dallo studente per visualizzarle nella pagina
+    $.ajax({ // invia una richiesta HTTP al server per ottenere gli esami superati dallo studente
+        url: 'http://localhost:3000/visualizzaLibretto',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ matricola: sessionStorage.getItem('matricola') }),
+    })
+    .done(function (data) { // se il libretto è trovato
+        let libretto = '';
+        data.libretto.forEach(esame => { // per ogni esame visualizza le informazioni nella tabella
+            libretto += `<tr>
+                <td>${esame['NOMEESAME']}</td>
+                <td>${esame['NOMECORSO']}</td>
+                <td>${esame['VOTO']}</td>
+                <td>${new Date(esame['DATAESAME']).toLocaleDateString()}</td>
+            </tr>`;
+        });
+        $('#libretto tbody').html(libretto);
+    })
+    .fail(function () {
+        $('#libretto tbody').html('<tr><td colspan="4">Nessun esame superato</td></tr>');
+    })
 }

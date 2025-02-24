@@ -9,12 +9,12 @@ body {
 }
 
 /* Intestazione form di login */
-#header {
+#logo {
     text-align: center;
     margin-bottom: 20px;
 }
 
-#header img {
+#logo img {
     width: 200px;
     height: auto;
     margin-bottom: 10px;
@@ -27,7 +27,7 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    width: 350px;
+    width: 35%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -151,48 +151,8 @@ body {
     flex-direction: column;
     text-align: center;
 }
-/* Form di recupero password */
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #1E3A8A; /* Blu scuro */
-    padding: 15px 30px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    color: white;
-}
-
-/* Stile della lista dei link */
-.nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-links li {
-    margin: 0 15px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-links a:hover {
-    color: #3B82F6; /* Blu chiaro */
-}
-
-/* Stile del pulsante di logout */
+/* Pulsante di logout */
 #logout-button {
     background: #ff4d4d;
     border: none;
@@ -208,3 +168,36 @@ body {
     background: #ff1a1a;
     transform: scale(1.05);
 }
+/* Pulsante di logout */
+
+/* Libretto */
+#libretto, #appelliPrenotabili {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#libretto th, #libretto td, #appelliPrenotabili th, #appelliPrenotabili td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#libretto th, #appelliPrenotabili th {
+    background-color: #3B82F6;
+    color: white;
+}
+
+#libretto tr:nth-child(even), #appelliPrenotabili tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#libretto tr:hover, #appelliPrenotabili tr:hover {
+    background-color: #ddd;
+}
+
+#libretto tbody tr td, #appelliPrenotabili tbody tr, td {
+    text-align: left;
+    color: #777;
+}
+/* Libretto */

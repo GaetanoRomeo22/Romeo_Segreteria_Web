@@ -58,3 +58,34 @@ app.post('/login', (req, res) => { // funzione di gestione del login
         }
     });
 });
+
+app.post('/visualizzaEsamiPrenotabili', (req, res) => { // funzione di visualizzazione degli esami superati dallo studente
+    const matricola = req.body.matricola, // estrae la matricola dalla richiesta
+          corso = req.body.corso; // estrae il corso dello studente
+    connection.query(`SELECT A.NOMEESAME, A.DATAESAME
+                      FROM APPELLI A
+                      WHERE A.NOMECORSO = ? AND A.DATAESAME > CURRENT_DATE
+                      AND A.NOMEESAME NOT IN (SELECT P.NOMEESAME FROM PRENOTA P WHERE P.MATRICOLA = ? AND P.NOMECORSO = ?)`, [corso, matricola, corso], (error, results) => { // query di ricerca degli esami superati dallo studente
+        if (results.length > 0) { // invia una risposta HTTP al client contenente gli appelli disponibili
+            res.json ({ appelli: results })
+        } else { // nel caso non ci siano appelli disponibili
+            res.status(400).json({ error: 'Nessun appello disponibile' });
+        }
+    })
+})
+
+app.post('/visualizzaLibretto', (req, res) => { // funzione di visualizzazione degli esami superati dallo studente
+    const matricola = req.body.matricola; // estrae la matricola dalla richiesta
+    connection.query(`SELECT A.NOMEESAME, A.NOMECORSO, S.VOTO, A.DATAESAME
+         FROM SUPERA S JOIN APPELLI A 
+         ON S.NOMEESAME = A.NOMEESAME 
+         AND S.NOMECORSO = A.NOMECORSO 
+         AND A.DATAESAME <= CURRENT_DATE 
+         WHERE S.MATRICOLA = ?`, [matricola], (error, results) => { // query di ricerca degli esami superati dallo studente
+        if (results.length > 0) { // invia una risposta HTTP al client contenente il libretto dello studente
+            res.json ({ libretto: results })
+        } else { // nel caso lo studente non abbia ancora superato alcun esame
+            res.status(400).json({ error: 'Nessun esame superato' });
+        }
+    })
+});
