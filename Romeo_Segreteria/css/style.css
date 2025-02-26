@@ -171,32 +171,32 @@ body {
 /* Pulsante di logout */
 
 /* Libretto */
-#libretto, #appelliPrenotabili {
+#libretto, #appelliPrenotabili, #appelliPrenotati {
     width: 90%;
     border-collapse: collapse;
     margin: 20px 0;
 }
 
-#libretto th, #libretto td, #appelliPrenotabili th, #appelliPrenotabili td {
+#libretto th, #libretto td, #appelliPrenotabili th, #appelliPrenotabili td, #appelliPrenotati th, #appelliPrenotati td {
     padding: 12px 15px;
     text-align: left;
     border: 1px solid #ddd;
 }
 
-#libretto th, #appelliPrenotabili th {
+#libretto th, #appelliPrenotabili th, #appelliPrenotati th {
     background-color: #3B82F6;
     color: white;
 }
 
-#libretto tr:nth-child(even), #appelliPrenotabili tr:nth-child(even) {
+#libretto tr:nth-child(even), #appelliPrenotabili tr:nth-child(even), #appelliPrenotati tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#libretto tr:hover, #appelliPrenotabili tr:hover {
+#libretto tr:hover, #appelliPrenotabili tr:hover, #appelliPrenotati tr:hover {
     background-color: #ddd;
 }
 
-#libretto tbody tr td, #appelliPrenotabili tbody tr, td {
+#libretto tbody tr td, #appelliPrenotabili tbody tr, td, #appelliPrenotati tbody tr td {
     text-align: left;
     color: #777;
 }

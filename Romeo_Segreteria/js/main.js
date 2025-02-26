@@ -72,17 +72,17 @@ function logout() { // gestisce la disconnessione dello studente dall'area riser
     window.location.href = 'index.html'; // reindirizza l'utente alla pagina di index
 }
 
-function visualizzaEsamiPrenotabili() { // mostra allo studente gli appelli a cui può prenotarsi
+function visualizzaAppelliPrenotabili() { // mostra allo studente gli appelli a cui può prenotarsi
     $.ajax({ // invia una richiesta HTTP al server per ottenere gli appelli a cui può prenotarsi lo studente
-        url: 'http://localhost:3000/visualizzaEsamiPrenotabili',
+        url: 'http://localhost:3000/visualizzaAppelliPrenotabili',
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({ matricola: sessionStorage.getItem('matricola'), corso: sessionStorage.getItem('corso') }),
     })
     .done(function (data) {
-        let esamiPrenotabili = '';
+        let appelliPrenotabili = '';
         data.appelli.forEach(esame => { // mostra gli appelli prenotabili
-            esamiPrenotabili += `<tr>
+            appelliPrenotabili += `<tr>
                 <td>${esame['NOMEESAME']}</td>
                 <td>${new Date(esame['DATAESAME']).toLocaleDateString()}</td>
             </tr>`;
@@ -91,6 +91,29 @@ function visualizzaEsamiPrenotabili() { // mostra allo studente gli appelli a cu
     })
     .fail(function () {
         $('#appelliPrenotabili tbody').html('<tr><td colspan="4">Nessun appello prenotabile</td></tr>');
+    })
+}
+
+function visualizzaAppelliPrenotati() { // mostra allo studente gli appelli a cui si è prenotato
+    $.ajax({ // invia una richiesta HTTP al server per ottenere gli appelli a cui lo studente si è prenotato
+        url: 'http://localhost:3000/visualizzaAppelliPrenotati',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ matricola: sessionStorage.getItem('matricola') }),
+    })
+    .done(function (data) {
+        let appelliPrenotati = '';
+        data.appelli.forEach(esame => { // mostra gli appelli prenotati
+            appelliPrenotati += `<tr>
+            <td>${esame['NOMEESAME']}</td>
+            <td>${new Date(esame['DATAPRENOTAZIONE']).toLocaleDateString()}</td>
+            <td>${new Date(esame['DATAESAME']).toLocaleDateString()}</td>
+        </tr>`;
+        });
+        $('#appelliPrenotati tbody').html(appelliPrenotati);
+    })
+    .fail(function () {
+        $('#appelliPrenotati tbody').html('<tr><td colspan="4">Nessun appello prenotato</td></tr>');
     })
 }
 

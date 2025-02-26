@@ -59,7 +59,20 @@ app.post('/login', (req, res) => { // funzione di gestione del login
     });
 });
 
-app.post('/visualizzaEsamiPrenotabili', (req, res) => { // funzione di visualizzazione degli esami superati dallo studente
+app.post('/visualizzaAppelliPrenotati', (req, res) => { // funzione di visualizzazione degli appelli prenotati dallo studente
+    const matricola = req.body.matricola; // estrae la matricola dalla richiesta
+    connection.query(`SELECT A.NOMEESAME, A.DATAESAME, P.DATAPRENOTAZIONE
+                      FROM APPELLI A JOIN PRENOTA P ON A.NOMEESAME = P.NOMEESAME AND A.NOMECORSO = P.NOMECORSO
+                      WHERE P.MATRICOLA = ? AND A.DATAESAME > CURRENT_DATE`, [matricola], (error, results) => { // query di ricerca degli appelli prenotati dallo studente
+        if (results.length > 0) { // invia una risposta HTTP al client contenente gli appelli prenotati
+            res.json ({ appelli: results })
+        } else { // nel caso non ci siano appelli prenotati
+            res.status(400).json({ error: 'Nessun appello prenotato' });
+        }
+    })
+})
+
+app.post('/visualizzaAppelliPrenotabili', (req, res) => { // funzione di visualizzazione degli esami superati dallo studente
     const matricola = req.body.matricola, // estrae la matricola dalla richiesta
           corso = req.body.corso; // estrae il corso dello studente
     connection.query(`SELECT A.NOMEESAME, A.DATAESAME

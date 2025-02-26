@@ -35,60 +35,61 @@
   <title>Title</title>
 </head>
 <body>
-<!-- Navbar di navigazione -->
-<nav class="navbar bg-primary fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand">Appelli Prenotati</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="account.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="appelli_disponibili.html">Appelli Disponibili</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="libretto.html">Libretto</a>
-        </li>
-        <li class="nav-item">
-          <input type="button" value="Logout" class="nav-link" onclick="logout()">
-        </li>
-      </ul>
+  <!-- Navbar di navigazione -->
+  <nav class="navbar bg-primary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand">Appelli Prenotati</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="account.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appelli_disponibili.html">Appelli Disponibili</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="libretto.html">Libretto</a>
+          </li>
+          <li class="nav-item">
+            <input type="button" value="Logout" class="nav-link" onclick="logout()">
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-<!-- Navbar di navigazione -->
+  </nav>
+  <!-- Navbar di navigazione -->
 
-<!-- Tabella per visualizzare gli appelli prenotati -->
-<table id="appelliPrenotabili">
-  <thead>
-  <tr>
-    <th>Nome Esame</th>
-    <th>Data</th>
-  </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-<!-- Tabella per visualizzare gli appelli prenotati -->
+  <!-- Tabella per visualizzare gli appelli prenotati -->
+  <table id="appelliPrenotati">
+    <thead>
+    <tr>
+      <th>Nome Esame</th>
+      <th>Data Prenotazione</th>
+      <th>Data Esame</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <!-- Tabella per visualizzare gli appelli prenotati -->
 
-<!-- JavaScript lato client -->
-<script>
-  window.addEventListener('load', function() { // quando la pagina è caricata
-    checkIfLogged(); // controlla che l'utente abbia accesso alla pagina
+  <!-- JavaScript lato client -->
+  <script>
+    window.addEventListener('load', function() { // quando la pagina è caricata
+      checkIfLogged(); // controlla che l'utente abbia accesso alla pagina
+      visualizzaAppelliPrenotati(); // mostra gli appelli prenotati
+    });
+  </script>
+  <!-- JavaScript lato client -->
 
-  });
-</script>
-<!-- JavaScript lato client -->
-
-<!-- JavaScript lato server -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/server.js"></script>
-<script src="js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<!-- JavaScript lato server -->
+  <!-- JavaScript lato server -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/server.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <!-- JavaScript lato server -->
 </body>
 </html>
