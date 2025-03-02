@@ -1,19 +1,15 @@
-window.onload = () => { // esegue il service worker una volta che la pagina è caricata
+window.onload = () => { // registrazione del service worker
     'use strict';
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service_worker.js').then(function (registration) { // service worker registrato correttamente
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            },
-            function (err) { // eventuali errori nella registrazione del service worker
-                console.log('ServiceWorker registration failed: ', err);
-            });
+        navigator.serviceWorker.register('service_worker.js')
+            .then(registration => console.log('ServiceWorker registration successful with scope: ', registration.scope))
+            .catch(err => console.log('ServiceWorker registration failed: ', err));
     }
-}
+};
 
 function login() { // funzione di gestione del login dello studente lato client
     const matricola = document.getElementById('matricola').value.trim(), // estrae la matricola
           password = document.getElementById('password').value.trim(); // estrae la password
-
     $.ajax ({ // invia una richiesta HTTP al server con ajax per verificare che lo studente sia registrato
         url: 'http://localhost:3000/login',
         method: 'POST',
@@ -87,7 +83,7 @@ function visualizzaAppelliPrenotabili() { // mostra allo studente gli appelli a 
                 <td>${new Date(esame['DATAESAME']).toLocaleDateString()}</td>
             </tr>`;
         });
-        $('#appelliPrenotabili tbody').html(esamiPrenotabili);
+        $('#appelliPrenotabili tbody').html(appelliPrenotabili);
     })
     .fail(function () {
         $('#appelliPrenotabili tbody').html('<tr><td colspan="4">Nessun appello prenotabile</td></tr>');

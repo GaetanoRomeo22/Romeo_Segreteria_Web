@@ -16,7 +16,7 @@ body {
 
 #logo img {
     width: 200px;
-    height: auto;
+    height: 200px;
     margin-bottom: 10px;
 }
 /* Intestazione form di login */
@@ -73,6 +73,11 @@ body {
     transition: all 0.3s ease-in-out;
 }
 
+#matricola:hover, #password:hover {
+    border-color: #3B82F6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
 #matricola:focus, #password:focus {
     border-color: #1E3A8A;
     box-shadow: 0 0 10px rgba(30, 58, 138, 0.4);
@@ -112,7 +117,7 @@ body {
 
 #showhide_passw {
     position: absolute;
-    right: 40px;
+    right: 35px;
     top: 40%;
     transform: translateY(-50%);
     background: none;
@@ -120,7 +125,11 @@ body {
     cursor: pointer;
     font-size: 18px;
     color: #1E3A8A;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#showhide_passw:hover {
+    transform: translate(-50%, -50%) scale(1.2);
 }
 
 #forgot-password, #back-to-login {

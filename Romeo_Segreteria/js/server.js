@@ -2,7 +2,6 @@
 const mysql = require('mysql2'), // pacchetto per connessione a database mysql
       express = require('express'), // framework di gestione del server
       cors = require('cors'), // pacchetto per la comunicazione client-server su domini diversi
-      passwordValidator = require('password-validator'), // pacchetto di gestione sicura delle password
       bcrypt = require('bcrypt') // pacchetto per la crittografia e l'hashing dei dati
 //---------------------------------------------- Moduli JavaScript --------------------------------------
 

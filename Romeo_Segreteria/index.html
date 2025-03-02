@@ -9,6 +9,7 @@
 
   <!-- Link al foglio di stile css -->
   <link rel = "stylesheet" type = "text/css" href = "css/style.css">
+  <link rel = "preconnect" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <!-- Link al foglio di stile css -->
 
@@ -19,7 +20,7 @@
   <!-- Meta tag for PWA -->
 
   <!--Specific meta tag for IOS -->
-  <meta name="apple-mobile-web-app-capable"          content="yes">
+  <meta name="mobile-web-app-capable"                content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title"            content="PreviewReading">
   <!--Specific meta tag for IOS -->
@@ -51,7 +52,7 @@
       <label for="matricola"></label>
       <div id="matricola-container">
         <i class="fa-solid fa-user"></i>
-        <input type="text" pattern="\d*" id="matricola" name="matricola" required placeholder="Matricola">
+        <input type="text" pattern="\d*" id="matricola" name="matricola" required placeholder="Matricola" autocomplete="off">
       </div>
       <!-- Matricola -->
 
@@ -59,8 +60,8 @@
       <label for="password"></label>
       <div id="password-container">
         <i class="fa-solid fa-lock"></i>
-        <input type="password" id="password" name="password" required placeholder="Password">
-        <button id="showhide_passw" type="button" onclick="togglePasswordVisibility(this, 'password')">
+        <input type="password" id="password" name="password" required placeholder="Password" autocomplete="off">
+        <button id="showhide_passw" type="button" onclick="togglePasswordVisibility(this, 'password')" aria-label="Mostra/Nascondi password">
           <i class="fa-regular fa-eye"></i>
         </button>
       </div>
@@ -82,17 +83,17 @@
 
   <!-- JavaScript lato client -->
   <script>
-    document.getElementById('login_form').addEventListener('submit', event => {
+    document.getElementById('login-form').addEventListener('submit', event => {
       event.preventDefault();
     });
   </script>
   <!-- JavaScript lato client -->
 
   <!-- JavaScript lato server -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="js/server.js"></script>
-  <script src="js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" async></script>
+  <script src="js/server.js" async></script>
+  <script src="js/main.js" async></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous" async></script>
   <!-- JavaScript lato server -->
 </body>
 </html>
